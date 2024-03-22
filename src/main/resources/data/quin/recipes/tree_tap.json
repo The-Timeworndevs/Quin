@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+    "item": "minecraft:iron_ingot"
+  },
+    "C": {
+    "item": "minecraft:cauldron"
+  },
+    "#": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "## ",
+    "IC "
+  ],
+  "result": {
+    "item": "quin:tree_tap"
+  },
+  "show_notification": true
+}
