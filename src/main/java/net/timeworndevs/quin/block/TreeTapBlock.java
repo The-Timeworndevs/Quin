@@ -1,37 +1,25 @@
 package net.timeworndevs.quin.block;
 
-import net.minecraft.block.*;
-import net.minecraft.entity.ai.pathing.NavigationType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stats;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Property;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.*;
-import net.minecraft.world.event.GameEvent;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.timeworndevs.quin.common.CommonItemRegistry;
 import org.jetbrains.annotations.Nullable;
 
-public class TreeTapBlock extends HorizontalFacingBlock {
+public class TreeTapBlock extends HorizontalDirectionalBlock {
 
-    public static final IntProperty FILL_LEVEL = IntProperty.of("fill_level", 0, 2);
+    public static final IntegerProperty FILL_LEVEL = IntegerProperty.create("fill_level", 0, 2);
 
 
-    public TreeTapBlock(Settings settings) {
+    public TreeTapBlock(FabricBlockSettings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(FILL_LEVEL, 0));
     }
@@ -40,7 +28,7 @@ public class TreeTapBlock extends HorizontalFacingBlock {
         return (Integer)state.get(FILL_LEVEL) < 3;
     }
 
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         if (world.random.nextInt(5) == 0) {
             int i = (Integer)state.get(FILL_LEVEL);
             if (i < 2) {
@@ -50,11 +38,11 @@ public class TreeTapBlock extends HorizontalFacingBlock {
 
     }
 
-    public static void dropResin(World world, BlockPos pos) {
+    public static void dropResin(Level world, BlockPos pos) {
         dropStack(world, pos, new ItemStack(CommonItemRegistry.RESIN, 1));
     }
 
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    public InteractionResult onUse(BlockState state, Level world, BlockPos pos, Player player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
         int i = (Integer)state.get(FILL_LEVEL);
         if (i >= 2) {

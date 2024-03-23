@@ -3,11 +3,10 @@ package net.timeworndevs.quin.common;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
-import net.minecraft.block.*;
-import net.minecraft.block.enums.Instrument;
-import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.DyeColor;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.timeworndevs.quin.block.TreeTapBlock;
 import net.timeworndevs.quin.init.QuinRegistry;
 
@@ -127,27 +126,26 @@ public class CommonBlockRegistry {
     public static Block BROWN_NETHER_BRICK_SLAB;
     public static Block BROWN_NETHER_BRICK_WALL;
 
-
     //public static TerraformSignBlock DRIFTWOOD_SIGN;
     //public static TerraformWallSignBlock DRIFTWOOD_WALL_SIGN;
     //public static TerraformHangingSignBlock DRIFTWOOD_HANGING_SIGN;
     //public static TerraformWallHangingSignBlock DRIFTWOOD_WALL_HANGING_SIGN;
 
     public static void register() {
-        RESIN_BLOCK = QuinRegistry.register("resin_block", new Block(FabricBlockSettings.of().mapColor(MapColor.BROWN).strength(0).sounds(BlockSoundGroup.PACKED_MUD)));
-        TREE_TAP = QuinRegistry.register("tree_tap", new TreeTapBlock(FabricBlockSettings.of().mapColor(MapColor.OAK_TAN).strength(2,3).sounds(BlockSoundGroup.WOOD).requiresTool()));
+        RESIN_BLOCK = QuinRegistry.register("resin_block", new Block(FabricBlockSettings.of().mapColor(MapColor.COLOR_BROWN).strength(0).sounds(SoundType.PACKED_MUD)));
+        TREE_TAP = QuinRegistry.register("tree_tap", new TreeTapBlock(FabricBlockSettings.of().mapColor(MapColor.WOOD).strength(2,3).sounds(SoundType.WOOD).requiresTool()));
 
-        DRIFTWOOD_LOG = QuinRegistry.register("driftwood_log", new PillarBlock(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(2.0F)));
-        DRIFTWOOD = QuinRegistry.register("driftwood", new PillarBlock(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(2.0F)));
-        DRIFTWOOD_PLANKS = QuinRegistry.register("driftwood_planks", new Block(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(2.0F, 3.0F)));
-        DRIFTWOOD_STAIRS = QuinRegistry.register("driftwood_stairs", new StairsBlock(DRIFTWOOD_PLANKS.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(2.0F, 3.0F)));
-        DRIFTWOOD_SLAB = QuinRegistry.register("driftwood_slab", new SlabBlock(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(2.0F, 3.0F)));
-        DRIFTWOOD_FENCE = QuinRegistry.register("driftwood_fence", new FenceBlock(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(2.0F, 3.0F)));
-        DRIFTWOOD_FENCE_GATE = QuinRegistry.register("driftwood_fence_gate", new FenceGateBlock(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(2.0F, 3.0F), WoodType.CRIMSON));
-        DRIFTWOOD_DOOR = QuinRegistry.register("driftwood_door", new DoorBlock(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(3.0F), BlockSetType.CRIMSON));
-        DRIFTWOOD_TRAPDOOR = QuinRegistry.register("driftwood_trapdoor", new TrapdoorBlock(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(3.0F), BlockSetType.CRIMSON));
-        DRIFTWOOD_PRESSURE_PLATE = QuinRegistry.register("driftwood_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).strength(0.5F).pistonBehavior(PistonBehavior.DESTROY),BlockSetType.CRIMSON));
-        DRIFTWOOD_BUTTON = QuinRegistry.register("driftwood_button", new ButtonBlock(FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).pistonBehavior(PistonBehavior.DESTROY).noCollision(), BlockSetType.CRIMSON, 30, true));
+        DRIFTWOOD_LOG = QuinRegistry.register("driftwood_log", new RotatedPillarBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F)));
+        DRIFTWOOD = QuinRegistry.register("driftwood", new RotatedPillarBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F)));
+        DRIFTWOOD_PLANKS = QuinRegistry.register("driftwood_planks", new Block(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F, 3.0F)));
+        DRIFTWOOD_STAIRS = QuinRegistry.register("driftwood_stairs", new StairBlock(DRIFTWOOD_PLANKS.getStateDefinition(), FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F, 3.0F)));
+        DRIFTWOOD_SLAB = QuinRegistry.register("driftwood_slab", new SlabBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F, 3.0F)));
+        DRIFTWOOD_FENCE = QuinRegistry.register("driftwood_fence", new FenceBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F, 3.0F)));
+        DRIFTWOOD_FENCE_GATE = QuinRegistry.register("driftwood_fence_gate", new FenceGateBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F, 3.0F), WoodType.CRIMSON));
+        DRIFTWOOD_DOOR = QuinRegistry.register("driftwood_door", new DoorBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(3.0F), BlockSetType.CRIMSON));
+        DRIFTWOOD_TRAPDOOR = QuinRegistry.register("driftwood_trapdoor", new TrapDoorBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(3.0F), BlockSetType.CRIMSON));
+        DRIFTWOOD_PRESSURE_PLATE = QuinRegistry.register("driftwood_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(0.5F).pistonBehavior(PistonBehavior.DESTROY),BlockSetType.CRIMSON));
+        DRIFTWOOD_BUTTON = QuinRegistry.register("driftwood_button", new ButtonBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).pistonBehavior(PushReaction.DESTROY).noCollision(), BlockSetType.CRIMSON, 30, true));
 
         //final Identifier DRIFTWOOD_SIGN_TEXTURE = Identifier.of(QuinMain.MODID, "entity/signs/driftwood_sign");
         //DRIFTWOOD_SIGN = QuinRegistry.register("driftwood_sign", new TerraformSignBlock(DRIFTWOOD_SIGN_TEXTURE, FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.NETHER_WOOD).noCollision()));
@@ -218,14 +216,14 @@ public class CommonBlockRegistry {
         WAXED_EXPOSED_COPPER_PANEL = QuinRegistry.register("waxed_exposed_copper_panel", new Block(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
         WAXED_COPPER_PANEL = QuinRegistry.register("waxed_copper_panel", new Block(FabricBlockSettings.of().mapColor(MapColor.ORANGE).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
 
-        OXIDIZED_COPPER_PANEL_STAIRS = QuinRegistry.register("oxidized_copper_panel_stairs", new OxidizableStairsBlock(Oxidizable.OxidationLevel.OXIDIZED, OXIDIZED_COPPER_PANEL.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
-        WEATHERED_COPPER_PANEL_STAIRS = QuinRegistry.register("weathered_copper_panel_stairs", new OxidizableStairsBlock(Oxidizable.OxidationLevel.WEATHERED, WEATHERED_COPPER_PANEL.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
-        EXPOSED_COPPER_PANEL_STAIRS = QuinRegistry.register("exposed_copper_panel_stairs", new OxidizableStairsBlock(Oxidizable.OxidationLevel.EXPOSED, EXPOSED_COPPER_PANEL.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
-        COPPER_PANEL_STAIRS = QuinRegistry.register("copper_panel_stairs", new OxidizableStairsBlock(Oxidizable.OxidationLevel.UNAFFECTED, COPPER_PANEL.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.ORANGE).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
-        WAXED_OXIDIZED_COPPER_PANEL_STAIRS = QuinRegistry.register("waxed_oxidized_copper_panel_stairs", new StairsBlock(WAXED_OXIDIZED_COPPER_PANEL.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
-        WAXED_WEATHERED_COPPER_PANEL_STAIRS = QuinRegistry.register("waxed_weathered_copper_panel_stairs", new StairsBlock(WAXED_WEATHERED_COPPER_PANEL.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
-        WAXED_EXPOSED_COPPER_PANEL_STAIRS = QuinRegistry.register("waxed_exposed_copper_panel_stairs", new StairsBlock(WAXED_EXPOSED_COPPER_PANEL.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
-        WAXED_COPPER_PANEL_STAIRS = QuinRegistry.register("waxed_copper_panel_stairs", new StairsBlock(WAXED_COPPER_PANEL.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
+        OXIDIZED_COPPER_PANEL_STAIRS = QuinRegistry.register("oxidized_copper_panel_stairs", new OxidizableStairsBlock(Oxidizable.OxidationLevel.OXIDIZED, OXIDIZED_COPPER_PANEL.getSt(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
+        WEATHERED_COPPER_PANEL_STAIRS = QuinRegistry.register("weathered_copper_panel_stairs", new OxidizableStairsBlock(Oxidizable.OxidationLevel.WEATHERED, WEATHERED_COPPER_PANEL.getSt(), FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
+        EXPOSED_COPPER_PANEL_STAIRS = QuinRegistry.register("exposed_copper_panel_stairs", new OxidizableStairsBlock(Oxidizable.OxidationLevel.EXPOSED, EXPOSED_COPPER_PANEL.getSt(), FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
+        COPPER_PANEL_STAIRS = QuinRegistry.register("copper_panel_stairs", new OxidizableStairsBlock(Oxidizable.OxidationLevel.UNAFFECTED, COPPER_PANEL.getSt(), FabricBlockSettings.of().mapColor(MapColor.ORANGE).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
+        WAXED_OXIDIZED_COPPER_PANEL_STAIRS = QuinRegistry.register("waxed_oxidized_copper_panel_stairs", new StairsBlock(WAXED_OXIDIZED_COPPER_PANEL.getSt(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
+        WAXED_WEATHERED_COPPER_PANEL_STAIRS = QuinRegistry.register("waxed_weathered_copper_panel_stairs", new StairsBlock(WAXED_WEATHERED_COPPER_PANEL.getSt(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
+        WAXED_EXPOSED_COPPER_PANEL_STAIRS = QuinRegistry.register("waxed_exposed_copper_panel_stairs", new StairsBlock(WAXED_EXPOSED_COPPER_PANEL.getSt(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
+        WAXED_COPPER_PANEL_STAIRS = QuinRegistry.register("waxed_copper_panel_stairs", new StairsBlock(WAXED_COPPER_PANEL.getSt(), FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
 
         OXIDIZED_COPPER_PANEL_SLAB = QuinRegistry.register("oxidized_copper_panel_slab", new OxidizableSlabBlock(Oxidizable.OxidationLevel.OXIDIZED, FabricBlockSettings.of().mapColor(MapColor.TEAL).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
         WEATHERED_COPPER_PANEL_SLAB = QuinRegistry.register("weathered_copper_panel_slab", new OxidizableSlabBlock(Oxidizable.OxidationLevel.WEATHERED, FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(3.0F, 6.0F).sounds(BlockSoundGroup.COPPER).requiresTool()));
@@ -243,7 +241,7 @@ public class CommonBlockRegistry {
         CRACKED_TEAL_NETHER_BRICKS = QuinRegistry.register("cracked_teal_nether_bricks", new Block(FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         CHISELED_TEAL_NETHER_BRICKS = QuinRegistry.register("chiseled_teal_nether_bricks", new Block(FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         TEAL_NETHER_BRICKS = QuinRegistry.register("teal_nether_bricks", new Block(FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
-        TEAL_NETHER_BRICK_STAIRS = QuinRegistry.register("teal_nether_brick_stairs", new StairsBlock(TEAL_NETHER_BRICKS.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
+        TEAL_NETHER_BRICK_STAIRS = QuinRegistry.register("teal_nether_brick_stairs", new StairsBlock(TEAL_NETHER_BRICKS.getSt(), FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         TEAL_NETHER_BRICK_SLAB = QuinRegistry.register("teal_nether_brick_slab", new SlabBlock(FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         TEAL_NETHER_BRICK_WALL = QuinRegistry.register("teal_nether_brick_wall", new WallBlock(FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         TEAL_NETHER_BRICK_FENCE = QuinRegistry.register("teal_nether_brick_fence", new FenceBlock(FabricBlockSettings.of().mapColor(MapColor.DARK_AQUA).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
@@ -251,7 +249,7 @@ public class CommonBlockRegistry {
         CRACKED_BROWN_NETHER_BRICKS = QuinRegistry.register("cracked_brown_nether_bricks", new Block(FabricBlockSettings.of().mapColor(MapColor.DIRT_BROWN).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         CHISELED_BROWN_NETHER_BRICKS = QuinRegistry.register("chiseled_brown_nether_bricks", new Block(FabricBlockSettings.of().mapColor(MapColor.DIRT_BROWN).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         BROWN_NETHER_BRICKS = QuinRegistry.register("brown_nether_bricks", new Block(FabricBlockSettings.of().mapColor(MapColor.DIRT_BROWN).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
-        BROWN_NETHER_BRICK_STAIRS = QuinRegistry.register("brown_nether_brick_stairs", new StairsBlock(TEAL_NETHER_BRICKS.getDefaultState(), FabricBlockSettings.of().mapColor(MapColor.DIRT_BROWN).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
+        BROWN_NETHER_BRICK_STAIRS = QuinRegistry.register("brown_nether_brick_stairs", new StairsBlock(TEAL_NETHER_BRICKS.getSt(), FabricBlockSettings.of().mapColor(MapColor.DIRT_BROWN).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         BROWN_NETHER_BRICK_SLAB = QuinRegistry.register("brown_nether_brick_slab", new SlabBlock(FabricBlockSettings.of().mapColor(MapColor.DIRT_BROWN).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         BROWN_NETHER_BRICK_WALL = QuinRegistry.register("brown_nether_brick_wall", new WallBlock(FabricBlockSettings.of().mapColor(MapColor.DIRT_BROWN).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
         BROWN_NETHER_BRICK_FENCE = QuinRegistry.register("brown_nether_brick_fence", new FenceBlock(FabricBlockSettings.of().mapColor(MapColor.DIRT_BROWN).strength(2.0F, 6.0F).sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool()));
