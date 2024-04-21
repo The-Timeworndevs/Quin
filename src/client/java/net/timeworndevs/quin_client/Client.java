@@ -26,5 +26,7 @@ public class Client implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlocks(translucent, CommonBlockRegistry.WHITE_CRYSTAL_PANE, CommonBlockRegistry.LIGHT_GRAY_CRYSTAL_PANE, CommonBlockRegistry.GRAY_CRYSTAL_PANE, CommonBlockRegistry.BLACK_CRYSTAL_PANE, CommonBlockRegistry.BROWN_CRYSTAL_PANE, CommonBlockRegistry.RED_CRYSTAL_PANE, CommonBlockRegistry.ORANGE_CRYSTAL_PANE, CommonBlockRegistry.YELLOW_CRYSTAL_PANE, CommonBlockRegistry.LIME_CRYSTAL_PANE, CommonBlockRegistry.GREEN_CRYSTAL_PANE, CommonBlockRegistry.CYAN_CRYSTAL_PANE, CommonBlockRegistry.LIGHT_BLUE_CRYSTAL_PANE, CommonBlockRegistry.BLUE_CRYSTAL_PANE, CommonBlockRegistry.PURPLE_CRYSTAL_PANE, CommonBlockRegistry.MAGENTA_CRYSTAL_PANE, CommonBlockRegistry.PINK_CRYSTAL_PANE);
 
 		BlockRenderLayerMap.INSTANCE.putBlocks(translucent, CommonBlockRegistry.BLAST_GLASS, CommonBlockRegistry.BLAST_GLASS_PANE, CommonBlockRegistry.BLAST_CRYSTAL, CommonBlockRegistry.BLAST_CRYSTAL_PANE);
+
+		BlockRenderLayerMap.INSTANCE.putBlocks(cutOut, CommonBlockRegistry.OAK_PICKET_FENCE);
 	}
 }

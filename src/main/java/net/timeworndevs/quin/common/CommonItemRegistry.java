@@ -16,6 +16,8 @@ public class CommonItemRegistry {
     public static BlockItem RESIN_BLOCK;
     public static BlockItem TREE_TAP;
 
+    public static BlockItem OAK_PICKET_FENCE;
+
     public static BlockItem DRIFTWOOD_LOG;
     public static BlockItem DRIFTWOOD;
     public static BlockItem DRIFTWOOD_PLANKS;
@@ -138,6 +140,8 @@ public class CommonItemRegistry {
         SYRUP_BOTTLE = QuinRegistry.register("syrup_bottle", new HoneyBottleItem(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
         RESIN_CHISEL = QuinRegistry.register("resin_chisel", new Item(new FabricItemSettings().maxDamage(238)));
 
+        OAK_PICKET_FENCE = QuinRegistry.register("oak_picket_fence", new BlockItem(CommonBlockRegistry.OAK_PICKET_FENCE, new Item.Properties()));
+
         DRIFTWOOD_LOG = QuinRegistry.register("driftwood_log", new BlockItem(CommonBlockRegistry.DRIFTWOOD_LOG, new Item.Properties()));
         DRIFTWOOD = QuinRegistry.register("driftwood", new BlockItem(CommonBlockRegistry.DRIFTWOOD, new Item.Properties()));
         DRIFTWOOD_PLANKS = QuinRegistry.register("driftwood_planks", new BlockItem(CommonBlockRegistry.DRIFTWOOD_PLANKS, new Item.Properties()));
@@ -145,6 +149,7 @@ public class CommonItemRegistry {
         DRIFTWOOD_SLAB = QuinRegistry.register("driftwood_slab", new BlockItem(CommonBlockRegistry.DRIFTWOOD_SLAB, new Item.Properties()));
         DRIFTWOOD_FENCE = QuinRegistry.register("driftwood_fence", new BlockItem(CommonBlockRegistry.DRIFTWOOD_FENCE, new Item.Properties()));
         DRIFTWOOD_FENCE_GATE = QuinRegistry.register("driftwood_fence_gate", new BlockItem(CommonBlockRegistry.DRIFTWOOD_FENCE_GATE, new Item.Properties()));
+        //picket fence
         DRIFTWOOD_DOOR = QuinRegistry.register("driftwood_door", new BlockItem(CommonBlockRegistry.DRIFTWOOD_DOOR, new Item.Properties()));
         DRIFTWOOD_TRAPDOOR = QuinRegistry.register("driftwood_trapdoor", new BlockItem(CommonBlockRegistry.DRIFTWOOD_TRAPDOOR, new Item.Properties()));
         DRIFTWOOD_PRESSURE_PLATE = QuinRegistry.register("driftwood_pressure_plate", new BlockItem(CommonBlockRegistry.DRIFTWOOD_PRESSURE_PLATE, new Item.Properties()));
@@ -262,6 +267,8 @@ public class CommonItemRegistry {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(content -> {content.addAfter(Items.HONEY_BOTTLE, SYRUP_BOTTLE);});
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(content -> {content.addAfter(Items.BEEHIVE, TREE_TAP);});
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(content -> {content.accept(RESIN_CHISEL);});
+
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(content -> {content.addAfter(Items.OAK_FENCE_GATE, OAK_PICKET_FENCE);});
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(content -> {content.addAfter(Items.WARPED_BUTTON, DRIFTWOOD_LOG);});
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(content -> {content.addAfter(DRIFTWOOD_LOG, DRIFTWOOD);});

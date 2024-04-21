@@ -7,7 +7,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.timeworndevs.quin.Main;
-import net.timeworndevs.quin.block.TreeTapBlock;
 
 public class QuinRegistry {
 

@@ -32,7 +32,7 @@ import net.timeworndevs.quin.common.CommonItemRegistry;
 import org.jetbrains.annotations.Nullable;
 
 public class TreeTapBlock extends HorizontalDirectionalBlock {
-    
+
     public static final IntegerProperty FILL_LEVEL = IntegerProperty.create("fill_level", 0, 2);
 
 

@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.timeworndevs.quin.block.PicketFenceBlock;
 import net.timeworndevs.quin.block.TreeTapBlock;
 import net.timeworndevs.quin.init.QuinRegistry;
 
@@ -18,6 +19,9 @@ public class CommonBlockRegistry {
 
     public static Block RESIN_BLOCK;
     public static TreeTapBlock TREE_TAP;
+
+    public static Block OAK_PICKET_FENCE;
+    public static Block SPRUCE_PICKET_FENCE;
 
     //driftwood, again...
     public static Block DRIFTWOOD_LOG;
@@ -27,6 +31,7 @@ public class CommonBlockRegistry {
     public static Block DRIFTWOOD_SLAB;
     public static Block DRIFTWOOD_FENCE;
     public static Block DRIFTWOOD_FENCE_GATE;
+    //public static Block DRIFTWOOD_PICKET_FENCE;
     public static Block DRIFTWOOD_DOOR;
     public static Block DRIFTWOOD_TRAPDOOR;
     public static Block DRIFTWOOD_PRESSURE_PLATE;
@@ -138,6 +143,9 @@ public class CommonBlockRegistry {
     public static void register() {
         RESIN_BLOCK = QuinRegistry.register("resin_block", new Block(FabricBlockSettings.of().mapColor(MapColor.COLOR_BROWN).strength(0).sounds(SoundType.PACKED_MUD)));
         TREE_TAP = QuinRegistry.register("tree_tap", new TreeTapBlock(FabricBlockSettings.of().mapColor(MapColor.WOOD).strength(2,3).sounds(SoundType.WOOD).requiresTool()));
+
+        OAK_PICKET_FENCE = QuinRegistry.register("oak_picket_fence", new PicketFenceBlock(FabricBlockSettings.of().mapColor(MapColor.WOOD).sounds(SoundType.WOOD).strength(2.0F)));
+        SPRUCE_PICKET_FENCE = QuinRegistry.register("spruce_picket_fence", new PicketFenceBlock(FabricBlockSettings.of().mapColor(MapColor.WOOD).sounds(SoundType.WOOD).strength(2.0F)));
 
         DRIFTWOOD_LOG = QuinRegistry.register("driftwood_log", new RotatedPillarBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F)));
         DRIFTWOOD = QuinRegistry.register("driftwood", new RotatedPillarBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_WHITE).sounds(SoundType.NETHER_WOOD).strength(2.0F)));
